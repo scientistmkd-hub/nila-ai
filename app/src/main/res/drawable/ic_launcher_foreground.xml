@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer Glow Orbit 1 -->
+    <path
+        android:pathData="M 54,26 A 28,28 0 1,1 53.99,26 Z"
+        android:strokeWidth="1.8"
+        android:strokeColor="#4080E9FF"
+        android:fillColor="#00000000" />
+
+    <!-- Tilted Elliptical Ring (Quantum Orbit) -->
+    <path
+        android:pathData="M 32,44 C 36,36 72,36 76,44 C 80,52 68,72 54,72 C 40,72 28,52 32,44 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#80A78BFA"
+        android:fillColor="#00000000" />
+
+    <!-- Second Tilted Orbit Ring -->
+    <path
+        android:pathData="M 76,64 C 72,72 36,72 32,64 C 28,56 40,36 54,36 C 68,36 80,56 76,64 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#8038BDF8"
+        android:fillColor="#00000000" />
+
+    <!-- Central Glowing Core Orb -->
+    <path
+        android:pathData="M 54,36 A 18,18 0 1,1 53.99,36 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="42"
+                android:startY="38"
+                android:endX="66"
+                android:endY="70"
+                android:type="linear">
+                <item android:color="#38BDF8" android:offset="0.0" />
+                <item android:color="#818CF8" android:offset="0.5" />
+                <item android:color="#C084FC" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Inner Core Spark/Iris -->
+    <path
+        android:pathData="M 54,44 A 10,10 0 1,1 53.99,44 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="50"
+                android:startY="46"
+                android:endX="58"
+                android:endY="62"
+                android:type="linear">
+                <item android:color="#FFFFFF" android:offset="0.0" />
+                <item android:color="#A5F3FC" android:offset="0.6" />
+                <item android:color="#67E8F9" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Dynamic AI Sparkle / Star at Core Center -->
+    <path
+        android:pathData="M 54,49 L 55.5,52.5 L 59,54 L 55.5,55.5 L 54,59 L 52.5,55.5 L 49,54 L 52.5,52.5 Z"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Quantum Energy Nodes -->
+    <path
+        android:pathData="M 32,44 A 2.5,2.5 0 1,1 31.99,44 Z"
+        android:fillColor="#38BDF8" />
+    <path
+        android:pathData="M 76,64 A 2.5,2.5 0 1,1 75.99,64 Z"
+        android:fillColor="#C084FC" />
+    <path
+        android:pathData="M 54,26 A 2,2 0 1,1 53.99,26 Z"
+        android:fillColor="#F472B6" />
+    <path
+        android:pathData="M 54,82 A 2,2 0 1,1 53.99,82 Z"
+        android:fillColor="#38BDF8" />
+</vector>

@@ -1,0 +1,6 @@
+{
+  "name": "Nila AI",
+  "description": "Futuristic multimodal personal AI assistant with on-device intelligence and privacy-first architecture",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
