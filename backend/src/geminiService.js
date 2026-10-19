@@ -21,16 +21,6 @@ class GeminiService {
     // Build Gemini contents array
     const contents = [];
 
-    // System persona guidance
-    contents.push({
-      role: 'user',
-      parts: [{ text: 'You are Nila, an intelligent, respectful, concise personal AI assistant. Keep responses clear and helpful.' }]
-    });
-    contents.push({
-      role: 'model',
-      parts: [{ text: 'Understood. I am Nila, your personal assistant. How can I help you today?' }]
-    });
-
     // Add recent context (up to last 10 messages)
     if (Array.isArray(conversationContext)) {
       for (const msg of conversationContext.slice(-10)) {
@@ -53,11 +43,11 @@ class GeminiService {
     });
 
     const requestPayload = {
+      systemInstruction: {
+        parts: [{ text: 'You are Nila, an intelligent, respectful, concise personal AI assistant. Keep responses clear and helpful.' }]
+      },
       contents,
       generationConfig: {
-        temperature: 0.7,
-        topK: 40,
-        topP: 0.95,
         maxOutputTokens: 2048
       }
     };

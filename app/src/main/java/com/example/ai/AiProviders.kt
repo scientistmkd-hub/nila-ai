@@ -71,15 +71,19 @@ class LocalKnowledgeChatProvider : AiChatProvider {
  * Never stores or requests the Gemini API key in Android APK or source code.
  */
 class GeminiCloudChatProvider(
-    private val getBackendUrl: () -> String = { "http://10.0.2.2:8080" },
+    private val getBackendUrl: () -> String = { "https://nila-ai-fo5z.onrender.com" },
     private val getAuthToken: () -> String = { "" }
 ) : AiChatProvider {
     override val name: String = "Nila Backend API (Gemini Production Proxy)"
     override val isLocal: Boolean = false
 
     private val httpClient = OkHttpClient.Builder()
-        .connectTimeout(15, TimeUnit.SECONDS)
-        .readTimeout(35, TimeUnit.SECONDS)
+        // A Render service can take a little longer to wake up after it has been idle,
+        // and the backend may retry a temporary Gemini response once.
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(90, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
+        .callTimeout(100, TimeUnit.SECONDS)
         .build()
 
     override val isConfigured: Boolean
@@ -120,6 +124,7 @@ class GeminiCloudChatProvider(
             val response = httpClient.newCall(requestBuilder.build()).execute()
             val code = response.code
             val bodyString = response.body?.string() ?: ""
+            response.close()
 
             // Strict Content-Type validation
             val contentType = response.header("Content-Type") ?: ""
@@ -183,7 +188,8 @@ class AiRouter(
     private val cloudEngine: GeminiCloudChatProvider = GeminiCloudChatProvider(
         getBackendUrl = {
             val prefs = context.getSharedPreferences("nila_settings_cache", Context.MODE_PRIVATE)
-            prefs.getString("backend_url", "http://10.0.2.2:8080") ?: "http://10.0.2.2:8080"
+            prefs.getString("backend_url", "https://nila-ai-fo5z.onrender.com")
+                ?: "https://nila-ai-fo5z.onrender.com"
         },
         getAuthToken = {
             val prefs = context.getSharedPreferences("nila_settings_cache", Context.MODE_PRIVATE)

@@ -47,7 +47,7 @@ data class NilaUserSettings(
     val pomodoroLongBreakMinutes: Int = 15,
     val pomodoroCycles: Int = 4,
     // Production Backend Architecture
-    val backendServerUrl: String = "http://10.0.2.2:8080",
+    val backendServerUrl: String = "https://nila-ai-fo5z.onrender.com",
     val backendAuthToken: String = ""
 )
 
@@ -132,7 +132,7 @@ class NilaPreferences(private val context: Context) {
             pomodoroBreakMinutes = prefs[KEY_POMO_BREAK] ?: 5,
             pomodoroLongBreakMinutes = prefs[KEY_POMO_LONG_BREAK] ?: 15,
             pomodoroCycles = prefs[KEY_POMO_CYCLES] ?: 4,
-            backendServerUrl = prefs[KEY_BACKEND_URL] ?: "http://10.0.2.2:8080",
+            backendServerUrl = prefs[KEY_BACKEND_URL] ?: "https://nila-ai-fo5z.onrender.com",
             backendAuthToken = prefs[KEY_BACKEND_TOKEN] ?: ""
         )
     }
